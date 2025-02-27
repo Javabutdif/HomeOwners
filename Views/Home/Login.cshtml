@@ -1,19 +1,181 @@
 ﻿@{
     ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
+<style>
+     /* Root Variables */
+        :root {
+            --brown: #8B4513; /* Primary brown */
+            --light-brown: #A0522D; /* Lighter brown */
+            --dark-brown: #654321; /* Darker brown */
+            --beige: #F5F5DC; /* Beige background */
+            --primary: var(--brown); /* Primary color */
+            --text-color: #333333;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --input-bg: #ffffff;
+            --input-border: #e0e0e0;
+            --error-color: #dc3545;
+        }
 
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--beige) 0%, #f8f4e9 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px var(--shadow-color);
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Form Styles */
+        h2 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .control-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-brown);
+            transition: all 0.3s ease;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            background-color: var(--input-bg);
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.2);
+        }
+
+        .form-control:hover {
+            border-color: var(--light-brown);
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            font-weight: 500;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 12px 20px;
+            font-size: 16px;
+            line-height: 1.5;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            color: white;
+            background-color: var(--primary);
+            border-color: var(--primary);
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(139, 69, 19, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-brown);
+            border-color: var(--dark-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(139, 69, 19, 0.25);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+            box-shadow: 0 3px 5px rgba(139, 69, 19, 0.2);
+        }
+
+        /* Decorative element */
+        .container:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--beige);
+            border-radius: 16px;
+            z-index: -1;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Animations */
+        @@keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            animation: fadeIn 0.6s ease forwards;
+        }
+</style>
 <h2>Login</h2>
 
 <form asp-action="LoginTask" asp-controller="Home" asp-method="post">
-    <div class="form-group">
+    <div class="form-group text-center">
         <label for="Username" class="control-label">Username</label>
         <input type="text" name="Username" id="Username" class="form-control" />
     </div>
-    <div class="form-group">
+    <div class="form-group text-center">
         <label for="Password" class="control-label">Password</label>
         <input type="password" name="Password" id="Password" class="form-control" />
     </div>
-    <div class="form-group">
+    <div class="form-group text-center">
         <button type="submit" class="btn btn-primary">Login</button>
     </div>
 </form>
