@@ -124,12 +124,10 @@ h2:after {
 .btn-primary:hover {
     background-color: var(--dark-brown);
     border-color: var(--dark-brown);
-    transform: translateY(-2px);
     box-shadow: 0 7px 14px rgba(139, 69, 19, 0.25);
 }
 
 .btn-primary:active {
-    transform: translateY(1px);
     box-shadow: 0 3px 5px rgba(139, 69, 19, 0.2);
 }
 
